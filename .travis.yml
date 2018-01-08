@@ -1,25 +1,21 @@
 language: bash
 sudo: required
-
 env:
   global:
-    - secure: NQOFXq3L4cuUZD/oVMtsGoJbKJtRvzcxZRFvAMJzQYR7Gk/H3c7u/iEG8lUeDldcAzFbcN8g9X0Q1z3GBzk18110ySc6IAG+/LNbM246d2FUlKAKSNUR7NON74NO+4ZHWVs2VD1M0l5fVi8wPMBZ+1UTnTaLnMkFUF1zOepz8ut5PWojH1U6CR5atyYqruZqWRvE/PBf9YMSC21zB+lCDFFrbkAM27SLol+DDAe7xsmBxGm7BKynDybKQp7nO1sqdFqdY+lfJQ/KJj/miIPjYTffS+feUU3IcM2A+LpoqBUll9CHeXB42GXeNcdyhCTomGpR7CNYBdD7ysw0BysIDIcKauqm/maZd6ySnFKSOkaTMV7tKyVOmQ9rLcFHSLbZkM/EqaY8apgvkxxQ8AbG2xTcQz66pO/bm/xeJiHkiXkGv2+UEzRaNLSSAADTiDAlsf5h4luIgGWqpqMiU6fz93waIZhTy1BG6AvKOevklUlI3WigLOix0h6ukfv3WCOBAiKybpbazn8qij8LScsZcmlP1laJSSjZmERCGniUt4SXVZHzEdBHYnwVQpjyXTjdf7YDMqvlXprRhxZtPGO/8hD/M33PnxnJdM81zofBgfeFOIYPSv37PmClbqRkbIBQon98KnaUQ1gS0HHQZ2B//IJvtdExiyjGPZw3N5Y3Ubk=
-    - secure: QgatQOpuvMjbPtF3k3XHr6hsAifmYNFKLpF+JzTx4O7BXQlu1+aELh+oOJH+STyBCNPiPqC9r0n/zzYhz4FxpvyuuLiLDlpN+0HsGLyRDpcxjqJMY0ph9lsOPMx4sKqx9eGfcXpPAfMy+gfLpZ6CnmykxLg1YwJysuTEa64VDzJ4Pvd08LiKLytOb3xPdmKeL0qghWneTX/hTwrHB92jbCPQKAhkF+m4+ZsAyct2v8P2ovcXgxB6snytCf7tHlcAL7HqmVLjVZm7a0c8DbQAFJBHaqC2GKqbAWwR4okS2rwhrpMaT6+oU7OJ3MgiUAeHgOjelgEWzqBB0lLZQ5Yo8RGwQXIrkULQNwVXSFdYP8nSWGLk+iDfw955ElKbYUfPfC0z2SKr4Oc5xlKNw3yNv21nbk1MSrF+R/6u4j8am+g/2WAeGUOWYwocx1bPNK7FR38aICxIbs0fjum2LBUU6s539IgTnic67PBub10FRN6IG3FwzyV/q0JuhM+TmbtJGBVaXxbzUkV0+0Oy0SxQgTv77g3wHu39pj5YdcW+ivGYmht1D2+Q7/TpOe1SS8FrnQ5GZLijz9zZD7KjSTMQaojZbZQIgt8B7YY/UeNEqzculAu4TTNHHWKhk+Q6oY0mnwGG7Ccx38cwWINzr8R3Ur3haS2bnnVDfszD6eM4q1k=
-
+    DOCKER_USER:
+      secure: C2kAQueOytEO8W9bAV/SZSRIxND5TbYlCpQiZXF3V8phrwQpSrJA+X7Hhc72USJqPeSa+GIRWMowmyZim0iTCWe3N1/Z6/KclKciEU8hzqUmzcMJGNCuhsNLurgnUBmp5Mfmqpv2Lh3fmzbYMs/ei6Ps1+Rk/bdUqNFWSq4kGF8w73St4JWlgZfasJRr5vMxDoUSD4y7UeYkPkUwl2WwTJLBDgl/8R2WnWk59rF2YHvuBgpXgiNlrj4u6BmdPCxpTP6+EeaOxPu7o5w/1YUz/EIsqpG+rV2/jfqzDrN9RJvDnux7Uw69sUM0ogoL9eAWkE+FrbBx/A7MfuAghdzQTkgQboMqeU5TVvnvxb5Oii+AQ2ApbZhNq/hnkRkwSck2G/IAoESoMA3cKmb9GmnH5nsgCypbYxlfC3VOuDppq+Wk+A2Fdku1GdwXHzZoZTLBZtwzSEDvPgCAAON1gKkNmrsVQEL4GbYB0Nx2L5lTdX3ecw9qFNIJaheKPwjmczKYI/JLoavNFf4DQ4aIsDaiFENe5kWHEpD2A952r+gwoo0bz5FZM05o615bBICKtHguCdL+Nwez0PnNAcnNieSJ+QE7JKGRrAG6AAzU1CVZKi7d9FnsvMcY2PIcPeQ+6H5YutCz+HjQ1p73K7WOntXOtk6k69jtkBEZKa9TMrFjFSw=
+    DOCKER_PASS:
+      secure: RK8Jwh9BW1TiAO7g2D5sNZ5YH4jknhdRrYhSR2kX6ut+AipNZsyciMnXUw91NogJz/HjuHvOs91hdHCHY4tObaJGpn0KYeAkjVVAu9LU5xdb2nl+vWh9i/CeXaI9shUivtH5xnKTrDNSDtgi3lol4EXLo8p7ORhx9wabX3Xsc0Uv3nPmHWXVZAGXYEY5Wj/CrrDSN0NLQoZWGaHPMM4mb20RvfC8mFP/9ZPyDFx87D74L3tggeyCGwCeYO1YmrQpPDrM10VmJL6rdxlaZMTsQnfJdZdL3qXou1NQjafO6decg522l15q8PmOGzwgIXklorPIb0ZWZLldD9XU6zabytDvJ1Cp+9sCt2UvznhvgZehG51yuHzg0Rq1HSwhWI9abJPsrrBYpBTmh7GIGsE5ABRHxKEuXT/ui5UC8Q/oyzIlpjwCoztnbt0TFlfMU3BonBnJA7JGLcLPcjkxVBj3jg+jrti7sd2yTfKGF6q8AlC2C5siRDZZFSWbXXoynEyvTrhoDTvFLLT9RqhZjwuIEm1Ai4X4t2CFWyScKc7b3Nc+4VqmKWe1jSrWN4FOMF1BZAyKNaWvI3zX/GMP5A+pmH6EbMkslqejULy+eBfyz31ZyCyqGcNSkC+dtNGoryBJBxs+x34idmxmaRRZHFmAWQ4fOTrlpILzK1jUX6BEn4Y=
 branches:
   only:
   - master
-
 services:
-  - docker
-
+- docker
 before_script: 
-
 script:
-  - bash ./unifi/mock_test.sh
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=$DOCKER_USER/ubiquiti-docker
-  - make -C unifi build
-  - if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
-
+- bash ./unifi/mock_test.sh
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- export REPO=$DOCKER_USER/ubiquiti-docker
+- make -C unifi build
+- if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
 after_success: 
