@@ -1,0 +1,27 @@
+language: bash
+sudo: required
+env:
+  global:
+    DOCKER_EMAIL:
+      secure: DMRfRhjY69QWJeBY6FrRXOQojAFVkxWBCKYyepqEui8gilYWtNheZq+1cKcsQMikHSUrPAwuwwGHDgnAkie8TTYPIgPCx51L+jak1D9NUBjraqME8PdK5GqUY9EZdc6R2vM2k7lZjzlHre3BHKFqJ7aD1eI1LFxg1NjjB+BoKxHDMyOvNerGcOp7i03tWc16V2sLQxShUE3hlVAC5aHfYN7jmNICwGUs2bFOBCiPx7u6Lut3z8UMMvfBNunHrtjfF9FjwUL72nsNa6OKqGmQv7gCLwOaY41Yq6HcXdwEU3P98jtnj0T4sqim1FB/aQTNRmjE0/v//VDkJNCvYlaRgmsLnRdjkFjJR1BMJxFlFMzsVNu52Jp2ATzqXZ+ks7U9dc211mU7nvbefoMxDK+C/enMgi5quXaHwVATPoyHWcCIsNCX62wnQmNy99Q3BvZFtuaYu073Q0JwathZhechqD5zmP9E55IIt/d8iCO6UYOu6l9vNguy3xnN6BbMw7cxxLswIk337M6/G533xi2+7+3bMuUhLI33QOmHcBj18fx4g6fI1YKCG/+n378xYCSNO40LrhyOQXprOsigRJyLHXa8czt6JGWQompnT+iJWZ5Jmh0uIMDP6UcDuI5EHedrFn45BxqPjNnmKoA9FvwkcUZvDwA+caXVgpfEmN7pHIw=
+    DOCKER_USER:
+      secure: VSaBUs5uQ7jdG8hlYRrM9XHQ80NYPlJP6zt0nbF7GlvpnqrULZK0CTGVqu63iRbG4kwsdGJpgtPC5jIV+X8SWn2NC/yVaris6lmGOXEEmeOjfHO2KH+E5UlDy+4URDUw472/dDEkFfuP8PaCZlRkrVqeS3WOfFvW87nkz59vYbybuJkdPlomwLf1S5bxU2kYBGntwsawPZkmKX4qIaIZPNcjBMYB75Wx7xno67haSNK3JwFXqgAd4LXOh31/21+E6VjofPBy5hB/wfh6tFNEaY5VdCWYiJ1g4punecwXhNb7qoyUy+D8ED5e5rWUarM86WVhuveye/zlfOxSYPvAcqWN5ve/dl+9afQhKyCkrDj4d2IesQeib6jFXh5KPFylUU0R4MUZ8pjzPwrSjRza86wbGpEuAfOmeZnoTydENEU9J5v8AQW91T+0pgi3Yx8Jp1eslj2Occ6LjItUSFERYVV/UIOPqsY6ZcN4W6kG5RBYqWhUSl8yjjjQAoxZWZ3ipgvLmgAYReiRkNL5F8FBSTk0pgQ7TPptdrb2Wx7SOvZ0m34IQAxRlEBT81j1vzD5zJZlXN3joVZqDl4rMsEKfLq7HzXJn9QmyW0PJ96cLI18epxi5p5j3/4hXUBk3/BBbWNU22f8b1/KXxpClMmCEoMEAAjSiDy6g5Gm/Ab5CFQ=
+    DOCKER_PASS:
+      secure: CSnZHLC0hiTJU+Hxn4YEk6cu+8ET/zTqK0PcVUz9+VwiEsug70o9kwmfvuyxXRf0kHKx5V73rTthgJUoJxJkd0pRfCWvk0pDJrIavhI2GtPhZLmsRlt/OrVsPlfRgsfR8Fi8irn3xoaOwEQl/aJeD4J6jFjo1G/HetRcPJJxn6EVUNiTwoxVQZJVEPU/yP1TEgb/oywAwqXUlsxMdATOPNVilktxqvdu8y/LgwudHm+DO0CcXbmr2Il2dbYYkJisR4RcNZT7hNwNNLD5w52xPBL8tvTiZENXdbdHQb+2MGeBq3XOmyB54o9/v36DMgUUE7I1L4w4YkW2VzLSOF/bhm8KcRdTw83YC7MEbYyrqSbtSXtuZrfCJiCz5lj60bsrGUFg0egnjxh6CsE6O/7dtDFI/VaN8ppGQXXxmUhtsleOxXXzRYGoLAPSKaPT+i3fbXvsbGdtGghsjE42Lp4U4M9l4jR/hAx0Z8djFVE0U0oglrCL2YKFk4Tj950+rHp9b9rbZdNmTHb+jBngtXpMQ7DU5QdCaeXFFeDg/gpWa4zUZEWqo4LbS4ltPfXEWZ4Gaeufv/qPBvIjNe4Liq9dIXVcEzFT5e6HrXStyGwT2BD2LHf7690NDHjsr6XWA7Hpu5Si/wCBUQHL3UBQIpPhMgHrUJaQC0zXPVkKS3zSQME=
+branches:
+  only:
+  - master
+services:
+- docker
+before_script: 
+script:
+- bash ./unifi/mock_test.sh
+- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+- export REPO=$DOCKER_USER/ubiquiti-docker
+- make -C unifi build
+- if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
+- bash ./unifi-video/mock_test.sh
+- make -C unifi-video build
+- if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi-video release; fi
+after_success: 
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
