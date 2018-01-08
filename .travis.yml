@@ -16,7 +16,7 @@ services:
 before_script: 
 script:
 - bash ./unifi/mock_test.sh
-- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
 - export REPO=$DOCKER_USER/ubiquiti-docker
 - make -C unifi build
 - if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
