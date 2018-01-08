@@ -1,5 +1,5 @@
 FROM phusion/baseimage:0.9.22
-MAINTAINER Chad Tindel "chad@tindel.net"
+MAINTAINER Awesinine
 
 # Must be passed in at build time with --build-arg
 ARG UNIFI_VERSION
