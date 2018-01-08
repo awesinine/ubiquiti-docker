@@ -2,16 +2,16 @@ language: bash
 sudo: required
 env:
   global:
-    DOCKER_USER:
-      - secure: C2kAQueOytEO8W9bAV/SZSRIxND5TbYlCpQiZXF3V8phrwQpSrJA+X7Hhc72USJqPeSa+GIRWMowmyZim0iTCWe3N1/Z6/KclKciEU8hzqUmzcMJGNCuhsNLurgnUBmp5Mfmqpv2Lh3fmzbYMs/ei6Ps1+Rk/bdUqNFWSq4kGF8w73St4JWlgZfasJRr5vMxDoUSD4y7UeYkPkUwl2WwTJLBDgl/8R2WnWk59rF2YHvuBgpXgiNlrj4u6BmdPCxpTP6+EeaOxPu7o5w/1YUz/EIsqpG+rV2/jfqzDrN9RJvDnux7Uw69sUM0ogoL9eAWkE+FrbBx/A7MfuAghdzQTkgQboMqeU5TVvnvxb5Oii+AQ2ApbZhNq/hnkRkwSck2G/IAoESoMA3cKmb9GmnH5nsgCypbYxlfC3VOuDppq+Wk+A2Fdku1GdwXHzZoZTLBZtwzSEDvPgCAAON1gKkNmrsVQEL4GbYB0Nx2L5lTdX3ecw9qFNIJaheKPwjmczKYI/JLoavNFf4DQ4aIsDaiFENe5kWHEpD2A952r+gwoo0bz5FZM05o615bBICKtHguCdL+Nwez0PnNAcnNieSJ+QE7JKGRrAG6AAzU1CVZKi7d9FnsvMcY2PIcPeQ+6H5YutCz+HjQ1p73K7WOntXOtk6k69jtkBEZKa9TMrFjFSw=
-    DOCKER_PASS:
-      - secure: RK8Jwh9BW1TiAO7g2D5sNZ5YH4jknhdRrYhSR2kX6ut+AipNZsyciMnXUw91NogJz/HjuHvOs91hdHCHY4tObaJGpn0KYeAkjVVAu9LU5xdb2nl+vWh9i/CeXaI9shUivtH5xnKTrDNSDtgi3lol4EXLo8p7ORhx9wabX3Xsc0Uv3nPmHWXVZAGXYEY5Wj/CrrDSN0NLQoZWGaHPMM4mb20RvfC8mFP/9ZPyDFx87D74L3tggeyCGwCeYO1YmrQpPDrM10VmJL6rdxlaZMTsQnfJdZdL3qXou1NQjafO6decg522l15q8PmOGzwgIXklorPIb0ZWZLldD9XU6zabytDvJ1Cp+9sCt2UvznhvgZehG51yuHzg0Rq1HSwhWI9abJPsrrBYpBTmh7GIGsE5ABRHxKEuXT/ui5UC8Q/oyzIlpjwCoztnbt0TFlfMU3BonBnJA7JGLcLPcjkxVBj3jg+jrti7sd2yTfKGF6q8AlC2C5siRDZZFSWbXXoynEyvTrhoDTvFLLT9RqhZjwuIEm1Ai4X4t2CFWyScKc7b3Nc+4VqmKWe1jSrWN4FOMF1BZAyKNaWvI3zX/GMP5A+pmH6EbMkslqejULy+eBfyz31ZyCyqGcNSkC+dtNGoryBJBxs+x34idmxmaRRZHFmAWQ4fOTrlpILzK1jUX6BEn4Y=
+
 branches:
   only:
   - master
+
 services:
 - docker
+
 before_script: 
+
 script:
 - bash ./unifi/mock_test.sh
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
