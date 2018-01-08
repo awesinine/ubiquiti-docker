@@ -20,8 +20,4 @@ script:
 - export REPO=$DOCKER_USER/ubiquiti-docker
 - make -C unifi build
 - if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
-- bash ./unifi-video/mock_test.sh
-- make -C unifi-video build
-- if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi-video release; fi
 after_success: 
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
