@@ -1,4 +1,4 @@
-NAME=ctindel/unifi-controller
+NAME=awesinine/unifi-controller
 VERSION=5.5.24
 UNIFI_DEB_URL=http://dl.ubnt.com/unifi/$(VERSION)/unifi_sysvinit_all.deb
 
