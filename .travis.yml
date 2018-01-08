@@ -2,6 +2,7 @@ language: bash
 sudo: required
 env:
   global:
+    - COMMIT=${TRAVIS_COMMIT::6}
 
 branches:
   only:
@@ -13,9 +14,16 @@ services:
 before_script: 
 
 script:
-- bash ./unifi/mock_test.sh
-- docker login -u $DOCKER_USER -p $DOCKER_PASS
-- export REPO=$DOCKER_USER/ubiquiti-docker
-- make -C unifi build
-- if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
-after_success: 
+  - bash ./unifi/mock_test.sh
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS
+  - export REPO=$DOCKER_USER/ubiquiti-docker
+  - export TAG=`if [ “$TRAVIS_BRANCH” == “master” ]; then echo “latest”; else echo $TRAVIS_BRANCH ; fi`
+  — echo $REPO:$TAG:$COMMIT
+  - make -C unifi build
+  - if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
+  — docker build -f Dockerfile -t $REPO:$COMMIT .
+  — docker tag $REPO:$COMMIT $REPO:$TAG
+  — docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  — docker push $REPO
+
+after_success:
