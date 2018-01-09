@@ -20,9 +20,7 @@ script:
   - export TAG=`if [ “$TRAVIS_BRANCH” == “master” ]; then echo “latest”; else echo $TRAVIS_BRANCH ; fi`
   - make -C unifi build
   - if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
-  - docker build -f Dockerfile -t $REPO/$COMMIT .
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker login -u "$DOCKER_USER" -p "$DOCKER_PASS";
-    docker push USER/REPO;
+    echo "Master Built and shipped"
     fi
