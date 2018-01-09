@@ -1,5 +1,6 @@
 language: bash
 sudo: required
+
 env:
   global:
     - COMMIT=${TRAVIS_COMMIT::6}
@@ -21,6 +22,4 @@ script:
   - make -C unifi build
   - if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then make -C unifi release; fi
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    echo "Master Built and shipped"
-    fi
+
