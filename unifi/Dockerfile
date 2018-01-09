@@ -9,8 +9,8 @@ ARG UNIFI_DEB_URL
 #  DB Stats to last 14 days.  See crontab addition above
 # https://help.ubnt.com/hc/en-us/articles/204911424-UniFi-How-to-remove-prune-older-data-and-adjust-mongo-database-size
 
-ADD ./unifi/mongo_prune_js.js /bin
-ADD ./unifi/start.sh /bin
+ADD mongo_prune_js.js /bin
+ADD start.sh /bin
 RUN /bin/chmod +x /bin/start.sh
 
 # We download the exact version of Unifi that we want so that we know our 
